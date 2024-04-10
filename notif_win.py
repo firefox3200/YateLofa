@@ -1,6 +1,6 @@
 from plyer import notification
 
-def send_notification(title, message, app_name='Моя программа', timeout=10, icon=None, sound=None, actions=None, urgency='normal', image=None):
+def send_notification(title, message, app_name='Моя программа', timeout=10, icon=None, sound=None, actions=None, urgency='normal', image=None, html=None):
     notification.notify(
         title=title,
         message=message,
@@ -9,18 +9,17 @@ def send_notification(title, message, app_name='Моя программа', time
         app_icon=icon,
         sound=sound,
         actions=actions,
-        urgency=urgency,  # Уровень важности уведомления
-        toast=False,  # Отображение уведомления в стиле Windows Toast
-        image=image  # Путь к изображению для отображения в уведомлении
+        urgency=urgency,
+        toast=False,
+        image=image,
+        html=html  # HTML-разметка для уведомления
     )
 
-# Пример отправки уведомления с дополнительными параметрами
+# Пример отправки уведомления с HTML-разметкой
+html_message = '<h1 style="color: blue;">Привет, мир!</h1><p>Это уведомление с использованием HTML-разметки.</p>'
 send_notification(
-    title='Улучшенное уведомление',
-    message='Это улучшенное уведомление с изображением и уровнем важности!',
+    title='Уведомление с HTML',
+    message='Уведомление с HTML-разметкой',
     icon='path/to/icon.ico',
-    sound='path/to/sound.wav',
-    actions=['Open', 'Dismiss'],
-    urgency='critical',  # Критический уровень важности
-    image='path/to/image.png'
+    html=html_message
 )
